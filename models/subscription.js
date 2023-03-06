@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/connection');
 const User = require('./user');
 
-class Subscription extends Model {}
+class Subscription extends Model { }
 
 Subscription.init(
   {
@@ -26,16 +26,22 @@ Subscription.init(
     type: {
       type: DataTypes.ENUM('monthly', 'yearly', 'one-time'),
       allowNull: false
-    }
+    },
+    // Associate a Subscription instance with a User instance
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
     timestamps: false,
+    freezeTableName: true,
     modelName: 'subscription',
   }
 );
-
-Subscription.belongsTo(User);
-User.hasMany(Subscription);
 
 module.exports = Subscription;

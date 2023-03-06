@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Subscription:</h3>
+
+    <form class="form new-subscription-form">
+      <div class="form-group">
+        <label for="subscription-name">subscription name:</label>
+        <input class="form-input" type="text" id="subscription-name" name="subscription-name" />
+      </div>
+      <div class="form-group">
+        <label for="subscription-type">type:</label>
+        <select class="form-input" id="subscription-type" name="subscription-type">
+          <option value="one-time">One-time</option>
+          <option value="monthly">Monthly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="subscription-price">price ($):</label>
+        <input class="form-input" type="number" id="subscription-price" name="subscription-price" step="0.01" min="0" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if subscriptions.length}}
+  <div class="col-md-6 subscription-list">
+    <h3>Current Subscriptions:</h3>
+
+    {{#each subscriptions as |subscription|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/subscription/{{subscription.id}}">{{subscription.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{subscription.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>

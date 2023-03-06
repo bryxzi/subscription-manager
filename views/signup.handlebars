@@ -1,0 +1,54 @@
+
+<h2>Sign Up</h2>
+<form class="form" id="signupForm">
+  <div class="form-group">
+    <label for="name-signup">Name:</label>
+    <input class="form-input" type="text" id="name-signup" name="name" required/>
+  </div>
+  <div class="form-group">
+    <label for="email-signup">Email:</label>
+    <input class="form-input" type="email" id="email-signup" name="email" required/>
+  </div>
+  <div class="form-group">
+    <label for="password-signup">Password:</label>
+    <input class="form-input" type="password" id="password-signup" name="password" required/>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit" id="signupBtn">Sign Up</button>
+  </div>
+</form>
+<!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" id="signupModalForm">
+          <div class="form-group">
+            <label for="name-signup-modal">Name:</label>
+            <input class="form-input" type="text" id="name-signup-modal" name="name" required/>
+          </div>
+          <div class="form-group">
+            <label for="email-signup-modal">Email:</label>
+            <input class="form-input" type="email" id="email-signup-modal" name="email" required/>
+          </div>
+          <div class="form-group">
+            <label for="password-signup-modal">Password:</label>
+            <input class="form-input" type="password" id="password-signup-modal" name="password" required/>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit" id="signupModalBtn">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

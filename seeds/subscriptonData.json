@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Basic",
+    "price": 10.99,
+    "type": "monthly",
+    "userId": 1
+  },
+  {
+    "name": "Premium",
+    "price": 24.99,
+    "type": "monthly",
+    "userId": 1
+  },
+  {
+    "name": "Gold",
+    "price": 49.99,
+    "type": "yearly",
+    "userId": 2
+  }
+]

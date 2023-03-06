@@ -1,0 +1,22 @@
+<h2>{{#if subscription}}Edit Subscription{{else}}New Subscription{{/if}}</h2>
+
+<form class="form" id="subscriptionForm">
+  {{#if subscription}}
+    <input type="hidden" name="id" value="{{subscription.id}}">
+  {{/if}}
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input class="form-input" type="text" id="name" name="name" value="{{subscription.name}}" required/>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input class="form-input" type="text" id="description" name="description" value="{{subscription.description}}" required/>
+  </div>
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input class="form-input" type="number" id="price" name="price" value="{{subscription.price}}" required/>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">{{#if subscription}}Update{{else}}Create{{/if}} Subscription</button>
+  </div>
+</form>

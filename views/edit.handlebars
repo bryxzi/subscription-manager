@@ -1,0 +1,19 @@
+<form action="/subscriptions/{{id}}" method="PUT">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{name}}">
+  </div>
+  <div>
+    <label for="type">Type</label>
+    <select id="type" name="type">
+      <option value="one-time" {{#if_eq type "one-time"}}selected{{/if_eq}}>One-time</option>
+      <option value="annual" {{#if_eq type "annual"}}selected{{/if_eq}}>Annual</option>
+      <option value="monthly" {{#if_eq type "monthly"}}selected{{/if_eq}}>Monthly</option>
+    </select>
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input type="number" id="price" name="price" step="0.01" min="0" value="{{price}}">
+  </div>
+  <button type="submit">Update Subscription</button>
+</form>

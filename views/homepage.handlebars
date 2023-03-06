@@ -1,0 +1,23 @@
+<!-- Loop over each object in the subscriptions array -->
+{{#each subscriptions as |subscription| }}
+<div class="row mb-4 subscription">
+  <div class="col-md-5">
+    <h2>
+      {{subscription.name}}
+    </h2>
+    <p>
+      <span for="img" aria-label="money">💲</span>
+      <!-- Display subscription price -->
+      <span class="dollar-amount">{{subscription.price}}</span>
+      {{subscription.type}}
+    </p>
+    <p>Added by {{subscription.user.name}}</p>
+  </div>
+  <div class="col-md-7">
+    <!-- Display subscription description -->
+    <p>
+      {{subscription.description}}
+    </p>
+  </div>
+</div>
+{{/each}}

@@ -1,0 +1,20 @@
+DROP DATABASE IF EXISTS subscription_db;
+CREATE DATABASE subscription_db;
+
+USE subscription_db;
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE subscriptions (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  type VARCHAR(20) NOT NULL,
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
