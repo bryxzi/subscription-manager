@@ -1,5 +1,5 @@
-const User = require('./User');
-const Subscription = require('./Subscription');
+const User = require('./user');
+const Subscription = require('./subscription');
 
 // User can have my subscriptions and each subscription belongs to exactly one user
 
