@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Add authentication middleware to ensure user is logged in before accessing certain routes
-app.use(withAuth);
+// app.use(withAuth);
 
 app.use(routes);
 
