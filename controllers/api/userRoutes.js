@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: 'You are now logged in!' , redirect: '/'}); // added to redirect after login
+      res.json({ user: userData, message: 'You are now logged in!' , redirect: '/api/subscriptions'}); // added to redirect after login
     });
   } catch (err) {
     console.log('Error: ', err);

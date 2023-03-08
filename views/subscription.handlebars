@@ -1,17 +1,63 @@
+<style>
+  #subscriptions-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .subscription {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .subscription h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .subscription p {
+    margin: 5px 0;
+  }
+  .subscription .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .subscription .actions button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+  }
+  .subscription .actions button:hover {
+    background-color: #ccc;
+  }
+</style>
+
 <h2>My Subscriptions</h2>
 
-{{#if subscriptions}}
-  <ul>
+<div id="subscriptions-container">
+  {{#if subscriptions}}
     {{#each subscriptions}}
-      <li>{{this.name}} - {{this.type}} - ${{this.price}}</li>
+      <div class="subscription">
+        <h2>{{this.name}}</h2>
+        <p>Subscription Type: {{this.type}}</p>
+        <p>Subscription Price: ${{this.price}}</p>
+        <div class="actions">
+          <button class="edit" data-id="{{this.id}}">Edit</button>
+          <button class="delete" data-id="{{this.id}}">Delete</button>
+        </div>
+      </div>
     {{/each}}
-  </ul>
-{{else}}
-  <p>No subscriptions found.</p>
-{{/if}}
+  {{else}}
+    <p>No subscriptions found.</p>
+  {{/if}}
+</div>
 
 <h2>Add a New Subscription</h2>
-<form action="/subscriptions" method="POST">
+<form id="new-subscription-form" action="/api/subscriptions" method="POST">
   <div>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>

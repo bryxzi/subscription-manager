@@ -1,7 +1,7 @@
 const subscriptionsContainer = document.querySelector('#subscriptions-container');
 
 // Get all subscriptions from the server and display them on the page
-fetch('/subscriptions')
+fetch('/api/subscriptions')
   .then(response => response.json())
   .then(subscriptions => {
     subscriptions.forEach(subscription => {
@@ -20,7 +20,7 @@ newSubscriptionForm.addEventListener('submit', event => {
     type: formData.get('type'),
     price: parseFloat(formData.get('price')),
   };
-  fetch('/subscriptions', {
+  fetch('/api/subscriptions', {
     method: 'POST',
     body: JSON.stringify(subscriptionData),
     headers: {
@@ -32,6 +32,9 @@ newSubscriptionForm.addEventListener('submit', event => {
     const subscriptionElement = createSubscriptionElement(subscription);
     subscriptionsContainer.appendChild(subscriptionElement);
     newSubscriptionForm.reset();
+  })
+  .catch(error => {
+    console.error('Error:', error);
   });
 });
 
@@ -59,7 +62,7 @@ subscriptionsContainer.addEventListener('submit', event => {
       type: formData.get('type'),
       price: parseFloat(formData.get('price')),
     };
-    fetch(`/subscriptions/${subscriptionId}`, {
+    fetch(`/api/subscriptions/${subscriptionId}`, {
       method: 'PUT',
       body: JSON.stringify(subscriptionData),
       headers: {
@@ -70,6 +73,9 @@ subscriptionsContainer.addEventListener('submit', event => {
     .then(updatedSubscription => {
       const subscriptionElement = event.target.closest('.subscription');
       subscriptionElement.replaceWith(createSubscriptionElement(updatedSubscription));
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
   }
 });
@@ -78,12 +84,20 @@ subscriptionsContainer.addEventListener('submit', event => {
 subscriptionsContainer.addEventListener('click', event => {
   if (event.target.classList.contains('delete')) {
     const subscriptionId = event.target.dataset.id;
-    fetch(`/subscriptions/${subscriptionId}`, {
+    fetch(`/api/subscriptions/${subscriptionId}`, {
       method: 'DELETE'
     })
     .then(response => {
-      const subscriptionElement = event.target.closest('.subscription');
-      subscriptionElement.remove();
+      if (response.ok) {
+        console.log('Subscription deleted successfully');
+        const subscriptionElement = event.target.closest('.subscription');
+        subscriptionElement.remove();
+      } else {
+        console.log('Subscription could not be deleted');
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting subscription:', error);
     });
   }
 });

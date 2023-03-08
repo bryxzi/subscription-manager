@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
     if (response.status === 200) {
       // window.location.href = '/home';
       // If successful, redirect the browser to the profile page
-      document.location.replace('/home');
+      document.location.replace('/api/subscriptions');
     } else if (response.status === 401) {
       // If login failed, show an error message
       const errorMessage = document.createElement('div');
